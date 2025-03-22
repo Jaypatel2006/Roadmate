@@ -15,6 +15,7 @@ const Navbar = () => {
           alt="RoadMate"
           className="h-17 object-contain rounded-2xl"
         />
+        <p>welcome</p>
       </div>
 
       {/* Middle - Navigation Links */}
