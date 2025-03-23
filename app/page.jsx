@@ -1,6 +1,14 @@
 "use client";
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
+import { Poppins,} from "next/font/google";
+
+const poppins = Poppins({
+  subsets: ["latin"],
+  weight: ["400", "700"],
+});
+
+
 
 export default function Home() {
   const [text, setText] = useState("Time");
@@ -30,7 +38,7 @@ export default function Home() {
 
   return (
     <>
-      <div className="flex items-center flex-col h-[85vh] justify-center">
+      <div className={`flex items-center flex-col h-[85vh] justify-center ${poppins.className}`}>
         <motion.div
           className="font-bold text-6xl text-black"
           animate={{ opacity: [0, 1] }}
