@@ -27,6 +27,9 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
+      
+      <link rel="icon" href="/logo.jpg" type="image/png" />
+      
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${bigShoulders.variable} 
         antialiased bg-gradient-to-b from-gray-100 to-gray-300 
