@@ -33,60 +33,58 @@ export default function Home() {
   }, [text, isDeleting, index, words]);
 
   return (
-    <div className="flex flex-col items-center justify-start h-screen px-6 text-center mt-40">
+    <div className="flex flex-col items-center justify-start min-h-screen w-full px-6 text-center mt-20 md:mt-32">
       {/* Main Animated Text */}
       <motion.h1
-
-        className="font-extrabold text-5xl md:text-7xl text-black leading-snug whitespace-nowrap"
+        className="font-extrabold text-[8vw] md:text-[6vw] lg:text-[5vw] xl:text-[4vw] text-black leading-snug whitespace-nowrap"
         animate={{ opacity: [0, 1], scale: [0.9, 1] }}
         transition={{ duration: 1 }}
       >
-        <span className="text-7xl text-black">❝</span>
-        We Are Here To Save Your{" "}
+        <span className="text-[6vw] md:text-[5vw] text-black">❝</span>
+        We Are Here To Save Your {" "}
         <span className="text-blue-500">{text}</span>
         <span className={cursorBlink ? "animate-blink text-black" : "text-black"}>|</span>
-        <span className="text-7xl text-black">❞</span>
+        <span className="text-[6vw] md:text-[5vw] text-black">❞</span>
       </motion.h1>
 
       {/* Quote Below */}
-      <p className="mt-6 text-xl md:text-2xl text-gray-700 max-w-2xl font-bold">
+      <p className="mt-6 text-[4vw] md:text-[2.5vw] lg:text-[2vw] text-gray-700 max-w-[80%] font-bold">
         “The road may be uncertain, but with the right help, every journey becomes a success.
         Drive with confidence, knowing assistance is always within reach.”
       </p>
 
       {/* Cards Section */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-35 w-full max-w-5xl">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12 w-[90%] max-w-[1200px]">
         {/* Card 1 */}
         <motion.div
-          className="p-6 rounded-lg shadow-lg bg-green-200/80 backdrop-blur-md border border-green-300"
+          className=" p-6 rounded-lg shadow-lg bg-green-200/80 backdrop-blur-md border border-green-300 min-h-[180px]"
           whileHover={{ scale: 1.05 }}
         >
-          <h3 className="text-gray-700 font-semibold">Average Response time</h3>
-          <p className="text-3xl font-bold text-purple-800">15 Mins</p>
-          <span className="text-2xl">⏱️</span>
+          <h3 className="text-gray-700 font-semibold text-[3vw] md:text-[1.5vw]">Average Response time</h3>
+          <p className="text-[6vw] md:text-[3vw] font-bold text-purple-800">15 Mins</p>
+          <span className="text-[5vw] md:text-[2vw]">⏱️</span>
         </motion.div>
 
         {/* Card 2 */}
         <motion.div
-          className="p-6 rounded-lg shadow-lg bg-blue-200/80 backdrop-blur-md border border-blue-300"
+          className="p-6 rounded-lg shadow-lg bg-blue-200/80 backdrop-blur-md border border-blue-300 min-h-[180px]"
           whileHover={{ scale: 1.05 }}
         >
-          <h3 className="text-gray-700 font-semibold">Anytime Services</h3>
-          <p className="text-3xl font-bold text-black">24X7</p>
-          <span className="text-2xl">📅</span>
+          <h3 className="text-gray-700 font-semibold text-[3vw] md:text-[1.5vw]">Anytime Services</h3>
+          <p className="text-[6vw] md:text-[3vw] font-bold text-black">24X7</p>
+          <span className="text-[5vw] md:text-[2vw]">📅</span>
         </motion.div>
 
         {/* Card 3 */}
         <motion.div
-          className="p-6 rounded-lg shadow-lg bg-red-200/80 backdrop-blur-md border border-red-300"
+          className="p-6 rounded-lg shadow-lg bg-red-200/80 backdrop-blur-md border border-red-300 min-h-[180px]"
           whileHover={{ scale: 1.05 }}
         >
-          <h3 className="text-gray-700 font-semibold">Certified Technicians</h3>
-          <p className="text-3xl font-bold text-green-800">2000+</p>
-          <span className="text-2xl">🔧</span>
+          <h3 className="text-gray-700 font-semibold text-[3vw] md:text-[1.5vw]">Certified Technicians</h3>
+          <p className="text-[6vw] md:text-[3vw] font-bold text-green-800">2000+</p>
+          <span className="text-[5vw] md:text-[2vw]">🔧</span>
         </motion.div>
       </div>
-
 
       {/* Blinking Cursor Animation */}
       <style>
