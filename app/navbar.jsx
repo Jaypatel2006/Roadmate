@@ -32,10 +32,10 @@ const Navbar = () => {
 
         {/* Right Side - Buttons */}
         <div className="flex">
-          <button className="bg-black text-white px-5 py-2 rounded-l-full">
+          <button className="bg-black text-white px-5 py-2 rounded-l-full cursor-pointer hover:bg-slate-600">
             Sign in
           </button>
-          <button className="bg-black text-white px-5 py-2 rounded-r-full border-l border-gray-400">
+          <button className="bg-black text-white px-5 py-2 rounded-r-full border-l border-gray-400 cursor-pointer hover:bg-slate-600">
             Sign up
           </button>
         </div>
