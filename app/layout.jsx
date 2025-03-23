@@ -1,5 +1,4 @@
 import { Geist, Geist_Mono } from "next/font/google";
-import { Big_Shoulders_Inline_Display } from "next/font/google";
 import "./globals.css";
 import Navbar from "./navbar.jsx";
 
@@ -13,11 +12,6 @@ export const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-const bigShoulders = Big_Shoulders_Inline_Display({
-  subsets: ["latin"],
-  weight: ["400", "700"],  
-  variable: "--font-big-shoulders", 
-});
 
 export const metadata = {
   title: "Next.js App with Google Fonts",
@@ -31,7 +25,7 @@ export default function RootLayout({ children }) {
       <link rel="icon" href="/logo.jpg" type="image/png" />
       
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${bigShoulders.variable} 
+        className={`${geistSans.variable} ${geistMono.variable} 
         antialiased bg-gradient-to-b from-gray-100 to-gray-300 
         text-gray-900 min-h-screen flex flex-col`}
       >
