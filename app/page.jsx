@@ -3,11 +3,11 @@ import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Poppins,} from "next/font/google";
 
+
 const poppins = Poppins({
   subsets: ["latin"],
   weight: ["400", "700"],
 });
-
 
 
 export default function Home() {
@@ -18,6 +18,8 @@ export default function Home() {
   const words = ["Time", "Money", "Efforts"];
 
   useEffect(() => {
+    
+
     const typingSpeed = isDeleting ? 100 : 150;
     const nextText = words[index];
 
