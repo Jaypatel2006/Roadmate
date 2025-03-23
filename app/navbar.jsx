@@ -20,13 +20,14 @@ const Navbar = () => {
 
       {/* Middle - Navigation Links */}
       <div className="bg-gray-200 px-6 py-2 rounded-full flex items-center gap-6">
-        <a href="#" className="text-black font-medium hover:underline">
-          Home
+        <a href="#" className="text-black font-medium hover:scale-110 transition duration-300">
+           Home
         </a>
-        <a href="#" className="text-black font-medium hover:underline">
+        <a href="#" className="text-black font-medium hover:scale-110 transition duration-300">
           About us
         </a>
-        <a href="#" className="text-black font-medium hover:underline">
+
+        <a href="#" className="text-black font-medium hover:scale-110 transition duration-300">
           Contact
         </a>
 
