@@ -54,7 +54,7 @@ export default function Home() {
       </p>
 
       {/* Cards Section */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12 w-[90%] max-w-[1200px]">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-15 mt-12 w-[100%] max-w-[1200px]">
         {/* Card 1 */}
         <motion.div
           className=" p-6 rounded-lg shadow-lg bg-green-200/80 backdrop-blur-md border border-green-300 min-h-[180px]"
@@ -98,5 +98,6 @@ export default function Home() {
         `}
       </style>
     </div>
+    
   );
 }
