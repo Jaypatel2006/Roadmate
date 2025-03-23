@@ -1,42 +1,61 @@
-
-import React from "react";
+"use client";
+import React, { useState, useEffect } from "react";
 
 const Navbar = () => {
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
-    <nav className="flex justify-between items-center px-6 py-3 shadow-md bg-white">
-      {/* Left Side - Logo & Name */}
-      <div className="flex items-center gap-3">
+    <nav
+      className={`fixed top-0 left-0 w-full px-8 py-4 flex justify-between items-center z-50 transition-all duration-300 ${
+        isScrolled
+          ? "bg-white/30 backdrop-blur-xl shadow-lg border-b border-gray-300"
+          : "bg-white shadow-md"
+      }`}
+    >
+      {/* Left Side - Logo */}
+      <div className="flex items-center gap-4">
         <img
-          src="logo.jpg" // Replace with actual logo path
+          src="logo.jpg"
           alt="RoadMate Logo"
-          className="w-18 h-18 object-contain rounded-4xl"
+          className="w-16 h-16 object-contain rounded-3xl"
         />
         <img
-          src="name.jpg" // Replace with actual name path
+          src="name.jpg"
           alt="RoadMate"
-          className="h-17 object-contain rounded-2xl"
+          className="h-12 object-contain rounded-xl"
         />
       </div>
 
-      {/* Middle - Navigation Links */}
-      <div className="bg-gray-200 px-6 py-2 rounded-full flex items-center gap-6">
-        <a href="#" className="text-black font-medium hover:scale-110 transition duration-300">
-           Home
-        </a>
-        <a href="#" className="text-black font-medium hover:scale-110 transition duration-300">
-          About us
-        </a>
+      {/* Right Side - Navigation Links & Buttons */}
+      <div className="flex items-center gap-6">
+        {/* Navigation Links */}
+        <div className="flex gap-6">
+          {["Home", "About us", "Contact"].map((link, index) => (
+            <a
+              key={index}
+              href="#"
+              className="text-black font-semibold transition-transform transform hover:scale-105 hover:text-blue-600 duration-300"
+            >
+              {link}
+            </a>
+          ))}
+        </div>
 
-        <a href="#" className="text-black font-medium hover:scale-110 transition duration-300">
-          Contact
-        </a>
-
-        {/* Right Side - Buttons */}
+        {/* Buttons */}
         <div className="flex">
-          <button className="bg-black text-white px-5 py-2 rounded-l-full cursor-pointer hover:bg-slate-600">
+          <button className="bg-gradient-to-r from-blue-600 to-blue-400 text-white px-6 py-2 rounded-l-full cursor-pointer hover:brightness-110 transition-all duration-300">
             Sign in
           </button>
-          <button className="bg-black text-white px-5 py-2 rounded-r-full border-l border-gray-400 cursor-pointer hover:bg-slate-600">
+          <button className="bg-gradient-to-r from-gray-800 to-gray-600 text-white px-6 py-2 rounded-r-full border-l border-gray-500 cursor-pointer hover:brightness-110 transition-all duration-300">
             Sign up
           </button>
         </div>
