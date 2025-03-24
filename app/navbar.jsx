@@ -25,7 +25,7 @@ const Navbar = () => {
       }`}
     >
       {/* Left Side - Logo */}
-      <div className="flex items-center gap-4">
+      <div className="flex items-center gap-4 ">
         <img
           src="logo.jpg"
           alt="RoadMate Logo"
