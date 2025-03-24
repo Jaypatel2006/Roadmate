@@ -22,7 +22,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       
-      <link rel="icon" href="/logo.jpg" type="image/png" />
+      <link rel="icon" type="image/png" sizes="1024x1024" href="/logo-1024x1024.png"/>
       
       <body
         className={`${geistSans.variable} ${geistMono.variable} 

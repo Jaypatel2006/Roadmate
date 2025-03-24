@@ -68,7 +68,9 @@ export default function Home() {
         >
           <h3 className="text-gray-700 font-semibold text-[3vw] md:text-[1.5vw]">Average Response time</h3>
           <p className="text-[6vw] md:text-[3vw] font-bold text-purple-800">15 Mins</p>
-          <span className="text-[5vw] md:text-[2vw]">⏱️</span>
+          <div className="flex justify-center items-center">
+         <img src="/watch.png" alt="Watch" className="w-[7vw] md:w-[5vw] ml-2rem"  />
+         </div>
         </motion.div>
 
         {/* Card 2 */}
@@ -78,7 +80,9 @@ export default function Home() {
         >
           <h3 className="text-gray-700 font-semibold text-[3vw] md:text-[1.5vw]">Anytime Services</h3>
           <p className="text-[6vw] md:text-[3vw] font-bold text-black">24X7</p>
-          <span className="text-[5vw] md:text-[2vw]">📅</span>
+          <div className="flex justify-center items-center">
+         <img src="/calander.png" alt="work all time" className="w-[7vw] md:w-[5vw] ml-2rem"  />
+         </div>
         </motion.div>
 
         {/* Card 3 */}
