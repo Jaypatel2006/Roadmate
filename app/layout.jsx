@@ -30,14 +30,9 @@ export default function RootLayout({ children }) {
         text-gray-900 min-h-screen flex flex-col`}
       >
         {/* Navbar - Sticky at top */}
-        <div className="sticky top-0 z-50 bg-white shadow-md">
-          <Navbar />
-        </div>
+        <Navbar />
 
-        {/* Main Content - Responsive & Centered */}
-        <main className="flex-grow container mx-auto px-6 py-10 max-w-4xl">
-          {children}
-        </main>
+        {children}
 
         {/* Footer Section */}
         <footer className="text-center py-6 text-gray-500">
