@@ -42,7 +42,7 @@ export default function Home() {
     <div className="flex flex-col items-center justify-start min-h-screen w-full px-6 text-center mt-20 md:mt-32">
       {/* Main Animated Text */}
       <motion.h1
-        className="font-extrabold text-[8vw] md:text-[6vw] lg:text-[5vw] xl:text-[4vw] text-black leading-snug whitespace-nowrap"
+        className="font-extrabold text-[5vw] md:text-[5vw] lg:text-[5vw] xl:text-[4vw] text-black leading-snug whitespace-nowrap"
         animate={{ opacity: [0, 1], scale: [0.9, 1] }}
         transition={{ duration: 1 }}
       >
