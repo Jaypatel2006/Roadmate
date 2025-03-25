@@ -38,7 +38,16 @@ export default function Home() {
     }
   }, [text, isDeleting, index, words]);
 
+  const services = [
+    { emoji: "🚛", title: "Towing Services", desc: "24/7 roadside assistance" },
+    { emoji: "🚗", title: "Flat Tire Assistance", desc: "Quick tire replacement" },
+    { emoji: "⛽", title: "Fuel Delivery", desc: "Fast fuel refilling" },
+    { emoji: "🔋", title: "Battery Services", desc: "Jumpstarts and replacements" },
+    { emoji: "🚙", title: "Vehicle Checkup & Repair", desc: "Comprehensive vehicle inspection" },
+  ];
+
   return (
+    <div>
     <div className="flex flex-col items-center justify-start min-h-screen w-full px-6 text-center mt-20 md:mt-32">
       {/* Main Animated Text */}
       <motion.h1
@@ -63,7 +72,7 @@ export default function Home() {
       <div className="grid grid-cols-1 md:grid-cols-3 gap-15 mt-12 w-[100%] max-w-[1200px]">
         {/* Card 1 */}
         <motion.div
-          className=" p-6 rounded-lg shadow-lg bg-green-200/80 backdrop-blur-md border border-green-300 min-h-[180px]"
+          className=" p-6 rounded-lg shadow-lg bg-white backdrop-blur-md border border-green-300 min-h-[180px]"
           whileHover={{ scale: 1.05 }}
         >
           <h3 className="text-gray-700 font-semibold text-[3vw] md:text-[1.5vw]">Average Response time</h3>
@@ -75,7 +84,7 @@ export default function Home() {
 
         {/* Card 2 */}
         <motion.div
-          className="p-6 rounded-lg shadow-lg bg-blue-200/80 backdrop-blur-md border border-blue-300 min-h-[180px]"
+          className="p-6 rounded-lg shadow-lg bg-white backdrop-blur-md border border-blue-300 min-h-[180px]"
           whileHover={{ scale: 1.05 }}
         >
           <h3 className="text-gray-700 font-semibold text-[3vw] md:text-[1.5vw]">Anytime Services</h3>
@@ -87,7 +96,7 @@ export default function Home() {
 
         {/* Card 3 */}
         <motion.div
-          className="p-6 rounded-lg shadow-lg bg-red-200/80 backdrop-blur-md border border-red-300 min-h-[180px]"
+          className="p-6 rounded-lg shadow-lg bg-white backdrop-blur-md border border-red-300 min-h-[180px]"
           whileHover={{ scale: 1.05 }}
         >
           <h3 className="text-gray-700 font-semibold text-[3vw] md:text-[1.5vw]">Certified Technicians</h3>
@@ -107,6 +116,59 @@ export default function Home() {
           }
         `}
       </style>
+    </div>
+   <div className="flex flex-col items-center justify-center min-h-screen bg-[url('/back.png')] bg-cover bg-center bg-no-repeat px-8 relative">
+      <motion.h2
+        initial={{ opacity: 0, y: -50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1 }}
+        className="text-4xl font-bold text-center mb-16 text-white shadow-lg bg-black/40 px-6 py-3 rounded-lg"
+      >
+        Services Provided
+      </motion.h2>
+
+      <div className="relative w-full max-w-6xl flex flex-col items-center">
+        {/* Vertical Zig-Zag Line */}
+        <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-1 h-full bg-blue-500"></div>
+
+        {services.map((service, index) => (
+          <motion.div
+            key={index}
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: index * 0.2 }}
+            className={`relative flex items-center w-full max-w-3xl my-12 ${
+              index % 2 === 0 ? "justify-start" : "justify-end"
+            }`}
+          >
+            {/* Side Connector Line */}
+            <div
+              className={`absolute w-10 h-1 bg-blue-500 ${
+                index % 2 === 0 ? "right-1/2" : "left-1/2"
+              } top-1/2 transform -translate-y-1/2`}
+            ></div>
+
+            {/* Service Card */}
+            <motion.div
+              whileHover={{ scale: 1.1, rotate: 1, boxShadow: "0px 10px 30px rgba(0, 0, 255, 0.3)" }}
+              className="relative bg-white p-6 rounded-xl shadow-xl max-w-md w-[320px] text-center flex flex-col items-center transition-all duration-500 ease-in-out border-2 border-transparent hover:border-blue-500"
+            >
+              <motion.span
+                initial={{ scale: 0.8, opacity: 0 }}
+                whileInView={{ scale: 1, opacity: 1 }}
+                transition={{ duration: 0.5, delay: index * 0.2 }}
+                className="text-4xl transition-transform duration-500"
+              >
+                {service.emoji}
+              </motion.span>
+              <h3 className="text-xl font-bold mt-2">{service.title}</h3>
+              <p className="text-gray-600 text-sm opacity-80 transition-opacity duration-500">{service.desc}</p>
+            </motion.div>
+          </motion.div>
+        ))}
+      </div>
+    </div>
     </div>
     
   );
