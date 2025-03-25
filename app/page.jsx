@@ -122,7 +122,7 @@ export default function Home() {
         initial={{ opacity: 0, y: -50 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1 }}
-        className="text-4xl font-bold text-center mb-16 text-white shadow-lg bg-black/40 px-6 py-3 rounded-lg"
+        className="text-4xl font-bold text-center mb-16 text-white shadow-lg bg-blue-600 px-6 py-3 rounded-lg"
       >
         Services Provided
       </motion.h2>
