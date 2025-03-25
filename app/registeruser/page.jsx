@@ -1,128 +1,107 @@
 "use client";
-import React, { useState } from "react";
-import { useRouter } from "next/navigation"; // Import useRouter for redirection
 
-const RegisterUser = () => {
+import { useState } from "react";
+import Link from "next/link";
+
+export default function RegisterUserPage() {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     password: "",
   });
 
-  const [message, setMessage] = useState("");
-  const [loading, setLoading] = useState(false); // Loading state
-  const router = useRouter(); // Initialize Next.js router
+  const [notification, setNotification] = useState("");
 
-  // Handle input change
+  // Handle input changes
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  // Handle form submission
+  // Submit Data
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setLoading(true); // Set loading to true while registering
 
     try {
-      const response = await fetch("/api/register", {
+      const response = await fetch("/api/registerUser", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
       });
 
-      const data = await response.json();
-      if (response.ok) {
-        setMessage("✅ Registration successful! Redirecting...");
+      if (!response.ok) throw new Error("Registration failed.");
 
-        setTimeout(() => {
-          router.push("/"); // Redirect to homepage
-        }, 1500);
-      } else {
-        setMessage(`❌ ${data.error || "Registration failed."}`);
-      }
+      setNotification("User registered successfully!");
+
+      // Hide the notification after 3 seconds
+      setTimeout(() => {
+        setNotification("");
+      }, 3000);
     } catch (error) {
-      setMessage("❌ Error registering user.");
-    } finally {
-      setLoading(false); // Set loading to false after request
+      alert(error.message);
     }
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gray-100">
-      <div className="bg-white p-8 rounded-lg shadow-lg w-96">
-        <h2 className="text-2xl font-semibold text-center mb-6">Registration</h2>
-        <form onSubmit={handleSubmit}>
-          <div className="mb-4">
-            <label className="block text-gray-700">
-              Username<span className="text-red-500">*</span>
-            </label>
+    <div className="flex justify-center items-center min-h-screen bg-gradient-to-br from-gray-200 to-gray-400 p-6">
+      <div className="flex bg-white p-8 rounded-2xl shadow-xl w-[700px]">
+        {/* Image Section */}
+        <div className="w-1/2 flex justify-center items-center">
+          <img src="/user.png" alt="User" className="w-48 h-48 object-cover rounded-lg shadow-lg" />
+        </div>
+
+        {/* Form Section */}
+        <div className="w-1/2 pl-6">
+          {/* Toggle Button */}
+          <div className="flex justify-between mb-4">
+            <button className="w-1/2 p-2 text-center bg-blue-600 text-white rounded-l-lg">User</button>
+            <Link href="/registerMech" className="w-1/2">
+              <button className="w-full p-2 text-center bg-gray-300 rounded-r-lg hover:bg-blue-600 hover:text-white transition-all">
+                Mechanic
+              </button>
+            </Link>
+          </div>
+
+          <h2 className="text-2xl font-bold mb-4 text-center text-gray-700">User Registration</h2>
+
+          <form onSubmit={handleSubmit} className="space-y-4">
             <input
               type="text"
               name="name"
-              value={formData.name}
-              onChange={handleChange}
+              placeholder="Full Name"
               required
-              className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500"
+              className="w-full p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-400"
+              onChange={handleChange}
             />
-          </div>
-          <div className="mb-4">
-            <label className="block text-gray-700">
-              Email<span className="text-red-500">*</span>
-            </label>
             <input
               type="email"
               name="email"
-              value={formData.email}
-              onChange={handleChange}
+              placeholder="Email"
               required
-              className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500"
+              className="w-full p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-400"
+              onChange={handleChange}
             />
-          </div>
-          <div className="mb-4">
-            <label className="block text-gray-700">
-              Password<span className="text-red-500">*</span>
-            </label>
             <input
               type="password"
               name="password"
-              value={formData.password}
-              onChange={handleChange}
+              placeholder="Password"
               required
-              className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500"
+              className="w-full p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-400"
+              onChange={handleChange}
             />
-          </div>
-          <button
-            type="submit"
-            className={`w-full text-white py-2 rounded-lg transition ${
-              loading ? "bg-yellow-400 cursor-not-allowed" : "bg-yellow-500 hover:bg-yellow-600 cursor-pointer"
-            }`}
-            disabled={loading}
-          >
-            {loading ? "Registering..." : "Sign Up"}
-          </button>
-        </form>
-        
-        {/* Message Box */}
-        {message && (
-          <div
-            className={`mt-4 text-center p-2 rounded-lg text-sm font-semibold ${
-              message.includes("✅")
-                ? "bg-green-100 text-green-700 border border-green-400"
-                : "bg-red-100 text-red-700 border border-red-400"
-            }`}
-          >
-            {message}
-          </div>
-        )}
 
-        <p className="text-right mt-4 text-gray-600 text-sm">
-          <a href="#" className="text-blue-500 hover:underline">
-            Login
-          </a>
-        </p>
+            <button type="submit" className="w-full bg-green-500 text-white p-2 rounded-md hover:bg-green-600 transition-all">
+              Register
+            </button>
+          </form>
+        </div>
       </div>
+
+      {/* Notification Message */}
+      {notification && (
+        <div className="fixed bottom-4 right-4 bg-green-500 text-white px-4 py-2 rounded-md shadow-lg">
+          {notification}
+        </div>
+      )}
     </div>
   );
-};
-
-export default RegisterUser;
+}

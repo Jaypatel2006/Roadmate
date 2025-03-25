@@ -56,9 +56,11 @@ const Navbar = () => {
         <button className="bg-gradient-to-r from-blue-600 to-blue-400 text-white px-5 py-2 rounded-l-full cursor-pointer hover:brightness-110 transition-all duration-300">
           Sign in
         </button>
+        <a href="/registeruser">
         <button className="bg-gradient-to-r from-gray-800 to-gray-600 text-white px-5 py-2 rounded-r-full border-l border-gray-500 cursor-pointer hover:brightness-110 transition-all duration-300">
           Sign up
         </button>
+        </a>
       </div>
 
       {/* Mobile Menu Button */}
