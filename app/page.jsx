@@ -40,74 +40,110 @@ export default function Home() {
 
   const services = [
     { emoji: "🚛", title: "Towing Services", desc: "24/7 roadside assistance" },
-    { emoji: "🚗", title: "Flat Tire Assistance", desc: "Quick tire replacement" },
+    {
+      emoji: "🚗",
+      title: "Flat Tire Assistance",
+      desc: "Quick tire replacement",
+    },
     { emoji: "⛽", title: "Fuel Delivery", desc: "Fast fuel refilling" },
-    { emoji: "🔋", title: "Battery Services", desc: "Jumpstarts and replacements" },
-    { emoji: "🚙", title: "Vehicle Checkup & Repair", desc: "Comprehensive vehicle inspection" },
+    {
+      emoji: "🔋",
+      title: "Battery Services",
+      desc: "Jumpstarts and replacements",
+    },
+    {
+      emoji: "🚙",
+      title: "Vehicle Checkup & Repair",
+      desc: "Comprehensive vehicle inspection",
+    },
   ];
 
   return (
     <div>
-    <div className="flex flex-col items-center justify-start min-h-screen w-full px-6 text-center mt-20 md:mt-32">
-      {/* Main Animated Text */}
-      <motion.h1
-        className="font-extrabold text-[5vw] md:text-[5vw] lg:text-[5vw] xl:text-[4vw] text-black leading-snug whitespace-nowrap"
-        animate={{ opacity: [0, 1], scale: [0.9, 1] }}
-        transition={{ duration: 1 }}
-      >
-        <span className="text-[6vw] md:text-[5vw] text-black">❝</span>
-        We Are Here To Save Your {" "}
-        <span className="text-blue-500">{text}</span>
-        <span className={cursorBlink ? "animate-blink text-black" : "text-black"}>|</span>
-        <span className="text-[6vw] md:text-[5vw] text-black">❞</span>
-      </motion.h1>
-
-      {/* Quote Below */}
-      <p className="mt-6 text-[4vw] md:text-[2.5vw] lg:text-[2vw] text-gray-700 max-w-[80%] font-bold">
-        “The road may be uncertain, but with the right help, every journey becomes a success.
-        Drive with confidence, knowing assistance is always within reach.”
-      </p>
-
-      {/* Cards Section */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-15 mt-12 w-[100%] max-w-[1200px]">
-        {/* Card 1 */}
-        <motion.div
-          className=" p-6 rounded-lg shadow-lg bg-white backdrop-blur-md border border-green-300 min-h-[180px]"
-          whileHover={{ scale: 1.05 }}
+      <div className="flex flex-col items-center justify-start min-h-screen w-full px-6 text-center mt-20 md:mt-32">
+        {/* Main Animated Text */}
+        <motion.h1
+          className="font-extrabold text-[5vw] md:text-[5vw] lg:text-[5vw] xl:text-[4vw] text-black leading-snug whitespace-nowrap"
+          animate={{ opacity: [0, 1], scale: [0.9, 1] }}
+          transition={{ duration: 1 }}
         >
-          <h3 className="text-gray-700 font-semibold text-[3vw] md:text-[1.5vw]">Average Response time</h3>
-          <p className="text-[6vw] md:text-[3vw] font-bold text-purple-800">15 Mins</p>
-          <div className="flex justify-center items-center">
-         <img src="/watch.png" alt="Watch" className="w-[7vw] md:w-[5vw] ml-2rem"  />
-         </div>
-        </motion.div>
+          <span className="text-[6vw] md:text-[5vw] text-black">❝</span>
+          We Are Here To Save Your <span className="text-blue-500">{text}</span>
+          <span
+            className={cursorBlink ? "animate-blink text-black" : "text-black"}
+          >
+            |
+          </span>
+          <span className="text-[6vw] md:text-[5vw] text-black">❞</span>
+        </motion.h1>
 
-        {/* Card 2 */}
-        <motion.div
-          className="p-6 rounded-lg shadow-lg bg-white backdrop-blur-md border border-blue-300 min-h-[180px]"
-          whileHover={{ scale: 1.05 }}
-        >
-          <h3 className="text-gray-700 font-semibold text-[3vw] md:text-[1.5vw]">Anytime Services</h3>
-          <p className="text-[6vw] md:text-[3vw] font-bold text-black">24X7</p>
-          <div className="flex justify-center items-center">
-         <img src="/calander.png" alt="work all time" className="w-[7vw] md:w-[5vw] ml-2rem"  />
-         </div>
-        </motion.div>
+        {/* Quote Below */}
+        <p className="mt-6 text-[4vw] md:text-[2.5vw] lg:text-[2vw] text-gray-700 max-w-[80%] font-bold">
+          “The road may be uncertain, but with the right help, every journey
+          becomes a success. Drive with confidence, knowing assistance is always
+          within reach.”
+        </p>
 
-        {/* Card 3 */}
-        <motion.div
-          className="p-6 rounded-lg shadow-lg bg-white backdrop-blur-md border border-red-300 min-h-[180px]"
-          whileHover={{ scale: 1.05 }}
-        >
-          <h3 className="text-gray-700 font-semibold text-[3vw] md:text-[1.5vw]">Certified Technicians</h3>
-          <p className="text-[6vw] md:text-[3vw] font-bold text-green-800">2000+</p>
-          <span className="text-[5vw] md:text-[2vw]">🔧</span>
-        </motion.div>
-      </div>
+        {/* Cards Section */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-15 mt-12 w-[100%] max-w-[1200px]">
+          {/* Card 1 */}
+          <motion.div
+            className=" p-6 rounded-lg shadow-lg bg-white backdrop-blur-md border border-green-300 min-h-[180px]"
+            whileHover={{ scale: 1.05 }}
+          >
+            <h3 className="text-gray-700 font-semibold text-[3vw] md:text-[1.5vw]">
+              Average Response time
+            </h3>
+            <p className="text-[6vw] md:text-[3vw] font-bold text-purple-800">
+              15 Mins
+            </p>
+            <div className="flex justify-center items-center">
+              <img
+                src="/watch.png"
+                alt="Watch"
+                className="w-[7vw] md:w-[5vw] ml-2rem"
+              />
+            </div>
+          </motion.div>
 
-      {/* Blinking Cursor Animation */}
-      <style>
-        {`
+          {/* Card 2 */}
+          <motion.div
+            className="p-6 rounded-lg shadow-lg bg-white backdrop-blur-md border border-blue-300 min-h-[180px]"
+            whileHover={{ scale: 1.05 }}
+          >
+            <h3 className="text-gray-700 font-semibold text-[3vw] md:text-[1.5vw]">
+              Anytime Services
+            </h3>
+            <p className="text-[6vw] md:text-[3vw] font-bold text-black">
+              24X7
+            </p>
+            <div className="flex justify-center items-center">
+              <img
+                src="/calander.png"
+                alt="work all time"
+                className="w-[7vw] md:w-[5vw] ml-2rem"
+              />
+            </div>
+          </motion.div>
+
+          {/* Card 3 */}
+          <motion.div
+            className="p-6 rounded-lg shadow-lg bg-white backdrop-blur-md border border-red-300 min-h-[180px]"
+            whileHover={{ scale: 1.05 }}
+          >
+            <h3 className="text-gray-700 font-semibold text-[3vw] md:text-[1.5vw]">
+              Certified Technicians
+            </h3>
+            <p className="text-[6vw] md:text-[3vw] font-bold text-green-800">
+              2000+
+            </p>
+            <span className="text-[5vw] md:text-[2vw]">🔧</span>
+          </motion.div>
+        </div>
+
+        {/* Blinking Cursor Animation */}
+        <style>
+          {`
           @keyframes blink {
             50% { opacity: 0; }
           }
@@ -115,61 +151,138 @@ export default function Home() {
             animation: blink 0.5s step-start infinite;
           }
         `}
-      </style>
-    </div>
-   <div className="flex flex-col items-center justify-center min-h-screen bg-[url('/back.png')] bg-cover bg-center bg-no-repeat px-8 relative">
-      <motion.h2
-        initial={{ opacity: 0, y: -50 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1 }}
-        className="text-4xl font-bold text-center mb-16 text-white shadow-lg bg-blue-600 px-6 py-3 rounded-lg"
-      >
-        Services Provided
-      </motion.h2>
-
-      <div className="relative w-full max-w-6xl flex flex-col items-center">
-        {/* Vertical Zig-Zag Line */}
-        <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-1 h-full bg-blue-500"></div>
-
-        {services.map((service, index) => (
-          <motion.div
-            key={index}
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: index * 0.2 }}
-            className={`relative flex items-center w-full max-w-3xl my-12 ${
-              index % 2 === 0 ? "justify-start" : "justify-end"
-            }`}
+        </style>
+      </div>
+      <div className="flex flex-col items-center justify-center min-h-screen bg-[url('/back.png')] bg-cover bg-center bg-no-repeat px-8 relative">
+        <div className="relative w-full max-w-6xl flex flex-col items-center">
+          {/* Road Sign Heading */}
+          <motion.h2
+            initial={{ opacity: 0, y: -50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1 }}
+            className="relative z-10 text-4xl font-bold text-white uppercase tracking-wide bg-green-900 px-8 py-4 rounded-lg shadow-lg border-4 border-white transform -rotate-3 mb-0"
+            style={{
+              background: "linear-gradient(145deg, #1a3c34, #0f2924)", // Green gradient for road sign
+              width: "fit-content",
+              boxShadow: "0 8px 20px rgba(0, 0, 0, 0.5)",
+            }}
           >
-            {/* Side Connector Line */}
-            <div
-              className={`absolute w-10 h-1 bg-blue-500 ${
-                index % 2 === 0 ? "right-1/2" : "left-1/2"
-              } top-1/2 transform -translate-y-1/2`}
-            ></div>
+            Services Provided
+            {/* Poles connecting to the road */}
+            <div className="absolute -bottom-8 left-1/4 w-2 h-8 bg-gray-700 rounded-b"></div>
+            <div className="absolute -bottom-8 right-1/4 w-2 h-8 bg-gray-700 rounded-b"></div>
+          </motion.h2>
 
-            {/* Service Card */}
-            <motion.div
-              whileHover={{ scale: 1.1, rotate: 1, boxShadow: "0px 10px 30px rgba(0, 0, 255, 0.3)" }}
-              className="relative bg-white p-6 rounded-xl shadow-xl max-w-md w-[320px] text-center flex flex-col items-center transition-all duration-500 ease-in-out border-2 border-transparent hover:border-blue-500"
+          {/* Road-like Design with SVG - Starts after heading */}
+          <div className="relative w-full flex flex-col items-center">
+            <svg
+              className="absolute top-0 left-1/2 transform -translate-x-1/2 w-12 h-full z-0"
+              viewBox="0 0 40 1000"
+              preserveAspectRatio="none"
             >
-              <motion.span
-                initial={{ scale: 0.8, opacity: 0 }}
-                whileInView={{ scale: 1, opacity: 1 }}
-                transition={{ duration: 0.5, delay: index * 0.2 }}
-                className="text-4xl transition-transform duration-500"
+              {/* Road Background */}
+              <rect x="0" y="0" width="40" height="100%" fill="#4a4a4a" />
+              {/* Yellow Center Line (Dashed) */}
+              <path
+                d="M 20 0 V 1000"
+                stroke="#FFD700"
+                strokeWidth="4"
+                strokeDasharray="20 20"
+              />
+              {/* White Lane Markings on Sides */}
+              <path
+                d="M 5 0 V 1000"
+                stroke="#FFFFFF"
+                strokeWidth="2"
+                strokeDasharray="15 15"
+              />
+              <path
+                d="M 35 0 V 1000"
+                stroke="#FFFFFF"
+                strokeWidth="2"
+                strokeDasharray="15 15"
+              />
+            </svg>
+
+            {services.map((service, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8, delay: index * 0.2 }}
+                className={`relative flex items-center w-full max-w-3xl my-12 mt-40 mb-5 ${
+                  index % 2 === 0 ? "justify-start" : "justify-end"
+                }`}
               >
-                {service.emoji}
-              </motion.span>
-              <h3 className="text-xl font-bold mt-2">{service.title}</h3>
-              <p className="text-gray-600 text-sm opacity-80 transition-opacity duration-500">{service.desc}</p>
-            </motion.div>
-          </motion.div>
-        ))}
+                {/* Side Connector Line */}
+                <div
+                  className={`absolute w-16 h-1 bg-gray-600 ${
+                    index % 2 === 0 ? "right-1/2 mr-6" : "left-1/2 ml-6"
+                  } top-1/2 transform -translate-y-1/2`}
+                ></div>
+
+                {/* Service Card with Road-Inspired Border and Hover */}
+                <motion.div
+                  whileHover={{
+                    scale: 1.1,
+                    rotate: index % 2 === 0 ? 2 : -2, // Matches previous dynamic tilt
+                    boxShadow: "0px 10px 30px rgba(30, 30, 30, 0.4)", // Yellow glow like road lines
+                  }}
+                  className="relative bg-white p-6 rounded-xl shadow-xl max-w-md w-[320px] text-center flex flex-col items-center transition-all duration-500 ease-in-out border-4 border-double border-gray-400"
+                  style={{
+                    background: "linear-gradient(145deg, #ffffff, #f0f0f0)", // Subtle road-like texture
+                  }}
+                >
+                  <motion.span
+                    initial={{ scale: 0.8, opacity: 0 }}
+                    whileInView={{ scale: 1, opacity: 1 }}
+                    transition={{ duration: 0.5, delay: index * 0.2 }}
+                    className="text-4xl transition-transform duration-500"
+                  >
+                    {service.emoji}
+                  </motion.span>
+                  <h3 className="text-xl font-bold mt-2">{service.title}</h3>
+                  <p className="text-gray-600 text-sm opacity-80 transition-opacity duration-500">
+                    {service.desc}
+                  </p>
+                </motion.div>
+              </motion.div>
+            ))}
+
+            {/* Tree Design at the Bottom */}
+            <div className="relative z-10 mt-12">
+              <svg
+                width="200"
+                height="300"
+                viewBox="0 0 200 300"
+                className="w-48 h-72"
+              >
+                {/* Tree Trunk */}
+                <rect
+                  x="90"
+                  y="150"
+                  width="20"
+                  height="150"
+                  fill="#5C4033"
+                  rx="5"
+                />
+                {/* Tree Foliage - Layered Circles */}
+                <circle cx="100" cy="150" r="60" fill="#2E8B57" opacity="0.9" />
+                <circle cx="80" cy="120" r="50" fill="#3CB371" opacity="0.85" />
+                <circle cx="120" cy="110" r="45" fill="#66CDAA" opacity="0.8" />
+                {/* Small Branches */}
+                <path d="M 95 180 L 70 160" stroke="#5C4033" strokeWidth="3" />
+                <path
+                  d="M 105 180 L 130 160"
+                  stroke="#5C4033"
+                  strokeWidth="3"
+                />
+              </svg>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-    </div>
-    
   );
 }
