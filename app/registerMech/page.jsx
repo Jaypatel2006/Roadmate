@@ -1,8 +1,11 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation"; // Import useRouter
 
 export default function RegisterPage() {
+  const router = useRouter(); // Initialize router
+
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -45,7 +48,13 @@ export default function RegisterPage() {
     });
 
     const result = await response.json();
-    alert(result.message);
+    
+    if (response.ok) {
+      alert("Registration Successful!");
+      router.push("/"); // Redirect to home page
+    } else {
+      alert(result.message);
+    }
   };
 
   return (
