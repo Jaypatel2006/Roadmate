@@ -3,11 +3,13 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
-
+  const pathname = usePathname();
+  console.log(pathname)
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
@@ -41,13 +43,13 @@ const Navbar = () => {
 
       {/* Desktop Navigation */}
       <div className="hidden md:flex items-center gap-8">
-        <Link href="/" className="text-black font-semibold transition-all transform hover:scale-105 hover:text-blue-600 duration-300">
+        <Link href="/" className={`text-black font-semibold transition-all transform hover:scale-105 hover:text-blue-600 duration-300 ${pathname=='/' ? "text-blue-500" : ""}`}>
           Home
         </Link>
-        <Link href="/aboutus" className="text-black font-semibold transition-all transform hover:scale-105 hover:text-blue-600 duration-300">
+        <Link href="/aboutus" className={`text-black font-semibold transition-all transform hover:scale-105 hover:text-blue-600 duration-300 ${pathname=='/aboutus' ? "text-blue-500" : ""}`}>
           About us
         </Link>
-        <Link href="/contact" className="text-black font-semibold transition-all transform hover:scale-105 hover:text-blue-600 duration-300">
+        <Link href="/contact" className={`text-black font-semibold transition-all transform hover:scale-105 hover:text-blue-600 duration-300 ${pathname=='/contact' ? "text-blue-500" : ""}`}>
           Contact
         </Link>
       </div>
@@ -55,10 +57,10 @@ const Navbar = () => {
       {/* Buttons for Desktop */}
       <div className="hidden md:flex">
         <button className="bg-gradient-to-r from-blue-600 to-blue-400 text-white px-5 py-2 rounded-l-full cursor-pointer hover:brightness-110 transition-all duration-300">
-          Login
+          <Link href="/login">Login</Link>
         </button>
         <button className="bg-gradient-to-r from-gray-800 to-gray-600 text-white px-5 py-2 rounded-r-full border-l border-gray-500 cursor-pointer hover:brightness-110 transition-all duration-300">
-          Sign up
+          <Link href='/registeruser'>SignUp</Link>
         </button>
       </div>
 
@@ -79,13 +81,13 @@ const Navbar = () => {
             exit={{ opacity: 0, y: -20 }}
             className="absolute top-16 left-0 w-full bg-white shadow-md border-b border-gray-300 flex flex-col items-center space-y-6 py-6 md:hidden"
           >
-            <Link href="/" className="text-black font-semibold text-lg transition-all transform hover:scale-105 hover:text-blue-600 duration-300" onClick={() => setIsOpen(false)}>
+            <Link href="/" className={`text-black font-semibold transition-all transform hover:scale-105 hover:text-blue-600 duration-300 ${pathname=='/' ? "text-blue-500" : ""}`} onClick={() => setIsOpen(false)}>
               Home
             </Link>
-            <Link href="/aboutus" className="text-black font-semibold text-lg transition-all transform hover:scale-105 hover:text-blue-600 duration-300" onClick={() => setIsOpen(false)}>
+            <Link href="/aboutus" className={`text-black font-semibold transition-all transform hover:scale-105 hover:text-blue-600 duration-300 ${pathname=='/aboutus' ? "text-blue-500" : ""}`} onClick={() => setIsOpen(false)}>
               About us
             </Link>
-            <Link href="/contact" className="text-black font-semibold text-lg transition-all transform hover:scale-105 hover:text-blue-600 duration-300" onClick={() => setIsOpen(false)}>
+            <Link href="/contact" className={`text-black font-semibold transition-all transform hover:scale-105 hover:text-blue-600 duration-300 ${pathname=='/contact' ? "text-blue-500" : ""}`} onClick={() => setIsOpen(false)}>
               Contact
             </Link>
 
