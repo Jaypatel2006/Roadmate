@@ -2,6 +2,14 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Poppins } from "next/font/google";
+import { 
+  Facebook, 
+  Twitter, 
+  Instagram, 
+  Linkedin, 
+  Mail, 
+  MapPin 
+} from 'lucide-react';
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -85,61 +93,57 @@ export default function Home() {
         </p>
 
         {/* Cards Section */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-15 mt-12 w-[100%] max-w-[1200px]">
-          {/* Card 1 */}
-          <motion.div
-            className=" p-6 rounded-lg shadow-lg bg-white backdrop-blur-md border border-green-300 min-h-[180px]"
-            whileHover={{ scale: 1.05 }}
-          >
-            <h3 className="text-gray-700 font-semibold text-[3vw] md:text-[1.5vw]">
-              Average Response time
-            </h3>
-            <p className="text-[6vw] md:text-[3vw] font-bold text-purple-800">
-              15 Mins
-            </p>
-            <div className="flex justify-center items-center">
-              <img
-                src="/watch.png"
-                alt="Watch"
-                className="w-[7vw] md:w-[5vw] ml-2rem"
-              />
-            </div>
-          </motion.div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 mt-12 w-full max-w-[1200px] px-4">
+  {/* Card 1 */}
+  <motion.div
+    className="p-6 rounded-2xl shadow-lg bg-white border border-green-400 min-h-[180px] transition-all duration-300"
+    whileHover={{
+      scale: 1.05,
+      boxShadow: "0px 8px 20px rgba(34, 197, 94, 0.5)", // Green glow
+    }}
+  >
+    <h3 className="text-gray-700 font-semibold text-lg sm:text-xl text-center">
+      Average Response Time
+    </h3>
+    <p className="text-4xl font-bold text-green-600 text-center mt-2">15 Mins</p>
+    <div className="flex justify-center mt-3">
+      <img src="/watch.png" alt="Watch" className="w-12 sm:w-16" />
+    </div>
+  </motion.div>
 
-          {/* Card 2 */}
-          <motion.div
-            className="p-6 rounded-lg shadow-lg bg-white backdrop-blur-md border border-blue-300 min-h-[180px]"
-            whileHover={{ scale: 1.05 }}
-          >
-            <h3 className="text-gray-700 font-semibold text-[3vw] md:text-[1.5vw]">
-              Anytime Services
-            </h3>
-            <p className="text-[6vw] md:text-[3vw] font-bold text-black">
-              24X7
-            </p>
-            <div className="flex justify-center items-center">
-              <img
-                src="/calander.png"
-                alt="work all time"
-                className="w-[7vw] md:w-[5vw] ml-2rem"
-              />
-            </div>
-          </motion.div>
+  {/* Card 2 */}
+  <motion.div
+    className="p-6 rounded-2xl shadow-lg bg-white border border-blue-400 min-h-[180px] transition-all duration-300"
+    whileHover={{
+      scale: 1.05,
+      boxShadow: "0px 8px 20px rgba(59, 130, 246, 0.5)", // Blue glow
+    }}
+  >
+    <h3 className="text-gray-700 font-semibold text-lg sm:text-xl text-center">
+      Anytime Services
+    </h3>
+    <p className="text-4xl font-bold text-blue-600 text-center mt-2">24x7</p>
+    <div className="flex justify-center mt-3">
+      <img src="/calander.png" alt="Calendar" className="w-12 sm:w-16" />
+    </div>
+  </motion.div>
 
-          {/* Card 3 */}
-          <motion.div
-            className="p-6 rounded-lg shadow-lg bg-white backdrop-blur-md border border-red-300 min-h-[180px]"
-            whileHover={{ scale: 1.05 }}
-          >
-            <h3 className="text-gray-700 font-semibold text-[3vw] md:text-[1.5vw]">
-              Certified Technicians
-            </h3>
-            <p className="text-[6vw] md:text-[3vw] font-bold text-green-800">
-              2000+
-            </p>
-            <span className="text-[5vw] md:text-[2vw]">🔧</span>
-          </motion.div>
-        </div>
+  {/* Card 3 */}
+  <motion.div
+    className="p-6 rounded-2xl shadow-lg bg-white border border-red-400 min-h-[180px] transition-all duration-300"
+    whileHover={{
+      scale: 1.05,
+      boxShadow: "0px 8px 20px rgba(239, 68, 68, 0.5)", // Red glow
+    }}
+  >
+    <h3 className="text-gray-700 font-semibold text-lg sm:text-xl text-center">
+      Certified Technicians
+    </h3>
+    <p className="text-4xl font-bold text-red-600 text-center mt-2">2000+</p>
+    <div className="text-center text-5xl mt-2">🔧</div>
+  </motion.div>
+</div>
+
 
         {/* Blinking Cursor Animation */}
         <style>
