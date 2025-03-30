@@ -1,6 +1,6 @@
 import jwt from "jsonwebtoken";
 
-const SECRET_KEY = process.env.JWT_SECRET || "your_secret_key";
+const SECRET_KEY = process.env.JWT_SECRET;
 
 // Generate Token
 export const generateToken = (userId) => {
@@ -10,8 +10,11 @@ export const generateToken = (userId) => {
 // Verify Token
 export const verifyToken = (token) => {
   try {
-    return jwt.verify(token, SECRET_KEY);
+    const decoded = jwt.verify(token, SECRET_KEY);
+    console.log("Decoded token:", decoded); // Debugging
+    return decoded;
   } catch (error) {
+    console.log("Token verification failed:", error.message);
     return null;
   }
 };

@@ -2,14 +2,8 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Poppins } from "next/font/google";
-import { 
-  Facebook, 
-  Twitter, 
-  Instagram, 
-  Linkedin, 
-  Mail, 
-  MapPin 
-} from 'lucide-react';
+import Link from "next/link";
+
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -92,57 +86,7 @@ export default function Home() {
           within reach.”
         </p>
 
-        {/* Cards Section */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 mt-12 w-full max-w-[1200px] px-4">
-  {/* Card 1 */}
-  <motion.div
-    className="p-6 rounded-2xl shadow-lg bg-white border border-green-400 min-h-[180px] transition-all duration-300"
-    whileHover={{
-      scale: 1.05,
-      boxShadow: "0px 8px 20px rgba(34, 197, 94, 0.5)", // Green glow
-    }}
-  >
-    <h3 className="text-gray-700 font-semibold text-lg sm:text-xl text-center">
-      Average Response Time
-    </h3>
-    <p className="text-4xl font-bold text-green-600 text-center mt-2">15 Mins</p>
-    <div className="flex justify-center mt-3">
-      <img src="/watch.png" alt="Watch" className="w-12 sm:w-16" />
-    </div>
-  </motion.div>
-
-  {/* Card 2 */}
-  <motion.div
-    className="p-6 rounded-2xl shadow-lg bg-white border border-blue-400 min-h-[180px] transition-all duration-300"
-    whileHover={{
-      scale: 1.05,
-      boxShadow: "0px 8px 20px rgba(59, 130, 246, 0.5)", // Blue glow
-    }}
-  >
-    <h3 className="text-gray-700 font-semibold text-lg sm:text-xl text-center">
-      Anytime Services
-    </h3>
-    <p className="text-4xl font-bold text-blue-600 text-center mt-2">24x7</p>
-    <div className="flex justify-center mt-3">
-      <img src="/calander.png" alt="Calendar" className="w-12 sm:w-16" />
-    </div>
-  </motion.div>
-
-  {/* Card 3 */}
-  <motion.div
-    className="p-6 rounded-2xl shadow-lg bg-white border border-red-400 min-h-[180px] transition-all duration-300"
-    whileHover={{
-      scale: 1.05,
-      boxShadow: "0px 8px 20px rgba(239, 68, 68, 0.5)", // Red glow
-    }}
-  >
-    <h3 className="text-gray-700 font-semibold text-lg sm:text-xl text-center">
-      Certified Technicians
-    </h3>
-    <p className="text-4xl font-bold text-red-600 text-center mt-2">2000+</p>
-    <div className="text-center text-5xl mt-2">🔧</div>
-  </motion.div>
-</div>
+        
 
 
         {/* Blinking Cursor Animation */}
@@ -156,7 +100,14 @@ export default function Home() {
           }
         `}
         </style>
-      </div><div className="flex flex-col items-center justify-center min-h-screen bg-[url('/back.png')] bg-cover bg-center bg-no-repeat px-8 relative">
+        <button
+  className="mt-6 bg-blue-600 text-white font-bold text-4xl rounded-lg shadow-md hover:bg-red-700 transition duration-300 cursor-pointer p-8"
+>
+  <Link href="#">🚨 Get Help Now 🚨</Link>
+</button>
+      </div>
+      
+      <div className="flex flex-col items-center justify-center min-h-screen bg-[url('/back.png')] bg-cover bg-center bg-no-repeat px-8 relative">
   <div className="relative w-full max-w-6xl flex flex-col items-center">
     {/* Road Sign Heading */}
     <motion.h2
@@ -286,6 +237,57 @@ export default function Home() {
       </div>
     </div>
   </div>
+</div>
+{/* Cards Section */}
+<div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 mt-12 w-full max-w-[1200px] px-4">
+  {/* Card 1 */}
+  <motion.div
+    className="p-6 rounded-2xl shadow-lg bg-white border border-green-400 min-h-[180px] transition-all duration-300"
+    whileHover={{
+      scale: 1.05,
+      boxShadow: "0px 8px 20px rgba(34, 197, 94, 0.5)", // Green glow
+    }}
+  >
+    <h3 className="text-gray-700 font-semibold text-lg sm:text-xl text-center">
+      Average Response Time
+    </h3>
+    <p className="text-4xl font-bold text-green-600 text-center mt-2">15 Mins</p>
+    <div className="flex justify-center mt-3">
+      <img src="/watch.png" alt="Watch" className="w-12 sm:w-16" />
+    </div>
+  </motion.div>
+
+  {/* Card 2 */}
+  <motion.div
+    className="p-6 rounded-2xl shadow-lg bg-white border border-blue-400 min-h-[180px] transition-all duration-300"
+    whileHover={{
+      scale: 1.05,
+      boxShadow: "0px 8px 20px rgba(59, 130, 246, 0.5)", // Blue glow
+    }}
+  >
+    <h3 className="text-gray-700 font-semibold text-lg sm:text-xl text-center">
+      Anytime Services
+    </h3>
+    <p className="text-4xl font-bold text-blue-600 text-center mt-2">24x7</p>
+    <div className="flex justify-center mt-3">
+      <img src="/calander.png" alt="Calendar" className="w-12 sm:w-16" />
+    </div>
+  </motion.div>
+
+  {/* Card 3 */}
+  <motion.div
+    className="p-6 rounded-2xl shadow-lg bg-white border border-red-400 min-h-[180px] transition-all duration-300"
+    whileHover={{
+      scale: 1.05,
+      boxShadow: "0px 8px 20px rgba(239, 68, 68, 0.5)", // Red glow
+    }}
+  >
+    <h3 className="text-gray-700 font-semibold text-lg sm:text-xl text-center">
+      Certified Technicians
+    </h3>
+    <p className="text-4xl font-bold text-red-600 text-center mt-2">2000+</p>
+    <div className="text-center text-5xl mt-2">🔧</div>
+  </motion.div>
 </div>
     </div>
   );

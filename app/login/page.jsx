@@ -4,12 +4,20 @@ import React, { useState } from 'react';
 import { Lock, User, ArrowRight } from 'lucide-react';
 
 const LoginPage = () => {
-  const [username, setUsername] = useState('');
+  const [email, setemail] = useState('');
   const [password, setPassword] = useState('');
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('Login attempt:', { username, password });
+    const res = await fetch('/api/login',{
+      method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({email,password}),
+    });
+    const data = await res.json();
+    alert(data);
+    console.log(data)
+    
   };
 
   return (
@@ -29,9 +37,9 @@ const LoginPage = () => {
                 </div>
                 <input 
                   type="text" 
-                  placeholder="Username"
-                  value={username}
-                  onChange={(e) => setUsername(e.target.value)}
+                  placeholder="Email"
+                  value={email}
+                  onChange={(e) => setemail(e.target.value)}
                   required
                   className="pl-10 pr-4 py-3 block w-full rounded-xl border border-gray-300 focus:border-blue-500 focus:ring focus:ring-blue-200 transition duration-300"
                 />

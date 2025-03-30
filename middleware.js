@@ -1,19 +1,30 @@
-import { NextResponse } from "next/server";
-import { verifyToken } from "@/utils/jwt";
+export const runtime = "nodejs";
 
-export function middleware(req) {
+import { NextResponse } from "next/server";
+import { verifyToken } from "@/utils/jwt"; // Ensure the path is correct
+
+export async function middleware(req) {
   const token = req.cookies.get("token")?.value;
 
-  if (!token) return NextResponse.redirect("/login");
+  console.log("Token from cookies:", token); // Debugging
+
+  if (!token) {
+    console.log("No token found. Redirecting to login...");
+    return NextResponse.redirect(new URL("/login", req.nextUrl.origin));
+  }
 
   const user = verifyToken(token);
-  if (!user) return NextResponse.redirect("/login");
 
-  req.user = user;
+  console.log("User after verification:", user); // Debugging
+
+  if (!user) {
+    console.log("Invalid token. Redirecting to login...");
+    return NextResponse.redirect(new URL("/login", req.nextUrl.origin));
+  }
+
   return NextResponse.next();
 }
 
 export const config = {
-  matcher: ["/api/protected/:path*"],
+  matcher: ["/aboutus/:path*"], 
 };
-
