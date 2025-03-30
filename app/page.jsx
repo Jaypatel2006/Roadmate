@@ -10,6 +10,42 @@ const poppins = Poppins({
   weight: ["400", "700"],
 });
 
+const TreeSVG = () => (
+  <svg width="80" height="120" viewBox="0 0 200 300" className="w-16 h-24">
+    {/* Tree Trunk */}
+    <rect x="90" y="150" width="20" height="150" fill="#5C4033" rx="5" />
+    {/* Tree Foliage */}
+    <circle cx="100" cy="150" r="60" fill="#2E8B57" opacity="0.9" />
+    <circle cx="80" cy="120" r="50" fill="#3CB371" opacity="0.85" />
+    <circle cx="120" cy="110" r="45" fill="#66CDAA" opacity="0.8" />
+  </svg>
+);
+
+// New tree components with different styles and sizes
+const PineTree = ({ className = "", scale = 1 }) => (
+  <svg width={80 * scale} height={120 * scale} viewBox="0 0 200 300" className={className}>
+    <rect x="90" y="200" width="20" height="100" fill="#8B4513" rx="3" />
+    <polygon points="100,40 50,120 30,120 100,70 40,160 20,160 100,100 50,200 150,200 100,100 180,160 160,160 100,70 150,120 130,120" fill="#2E8B57" />
+  </svg>
+);
+
+const RoundTree = ({ className = "", scale = 1, colors = ["#228B22", "#32CD32", "#006400"] }) => (
+  <svg width={80 * scale} height={120 * scale} viewBox="0 0 200 300" className={className}>
+    <rect x="90" y="180" width="20" height="120" fill="#8B4513" rx="3" />
+    <circle cx="100" cy="120" r="80" fill={colors[0]} opacity="0.85" />
+    <circle cx="80" cy="110" r="40" fill={colors[1]} opacity="0.9" />
+    <circle cx="120" cy="100" r="35" fill={colors[2]} opacity="0.8" />
+  </svg>
+);
+
+const MapleTree = ({ className = "", scale = 1 }) => (
+  <svg width={80 * scale} height={120 * scale} viewBox="0 0 200 300" className={className}>
+    <rect x="90" y="180" width="20" height="120" fill="#A0522D" rx="3" />
+    <path d="M100,60 C60,100 40,150 60,180 C80,200 120,200 140,180 C160,150 140,100 100,60" fill="#FF8C00" opacity="0.85" />
+    <path d="M100,80 C70,110 60,140 70,170 C80,190 120,190 130,170 C140,140 130,110 100,80" fill="#FF4500" opacity="0.75" />
+  </svg>
+);
+
 export default function Home() {
   const [text, setText] = useState("");
   const [isDeleting, setIsDeleting] = useState(false);
@@ -81,9 +117,9 @@ export default function Home() {
 
         {/* Quote Below */}
         <p className="mt-6 text-[4vw] md:text-[2.5vw] lg:text-[2vw] text-gray-700 max-w-[80%] font-bold">
-          “The road may be uncertain, but with the right help, every journey
+          "The road may be uncertain, but with the right help, every journey
           becomes a success. Drive with confidence, knowing assistance is always
-          within reach.”
+          within reach."
         </p>
 
         
@@ -97,6 +133,27 @@ export default function Home() {
           }
           .animate-blink {
             animation: blink 0.5s step-start infinite;
+          }
+          
+          /* Animation for trees */
+          @keyframes sway {
+            0% { transform: rotate(0deg); }
+            50% { transform: rotate(1deg); }
+            100% { transform: rotate(0deg); }
+          }
+          .tree-sway {
+            animation: sway 5s ease-in-out infinite;
+            transform-origin: bottom center;
+          }
+          .tree-sway-delay1 {
+            animation: sway 6s ease-in-out infinite;
+            animation-delay: 0.5s;
+            transform-origin: bottom center;
+          }
+          .tree-sway-delay2 {
+            animation: sway 7s ease-in-out infinite;
+            animation-delay: 1s;
+            transform-origin: bottom center;
           }
         `}
         </style>
@@ -126,6 +183,22 @@ export default function Home() {
       <div className="absolute -bottom-8 left-1/4 w-2 h-8 bg-gray-700 rounded-b"></div>
       <div className="absolute -bottom-8 right-1/4 w-2 h-8 bg-gray-700 rounded-b"></div>
     </motion.h2>
+
+    {/* Background Trees - Left Side */}
+    <div className="absolute left-0 bottom-0 z-0 w-full h-full pointer-events-none overflow-hidden">
+      <RoundTree className="absolute left-0 bottom-0 tree-sway opacity-70" scale={1.5} />
+      <PineTree className="absolute left-[5%] bottom-[10%] tree-sway-delay1 opacity-60" scale={1.2} />
+      <MapleTree className="absolute left-[15%] bottom-[5%] tree-sway-delay2 opacity-80" scale={1} />
+      <RoundTree className="absolute left-[25%] bottom-[15%] tree-sway opacity-50" scale={0.8} colors={["#004d00", "#006400", "#008000"]} />
+      <PineTree className="absolute left-[45%] bottom-0 tree-sway-delay1 opacity-30" scale={1.8} />
+      
+      {/* Right Side */}
+      <RoundTree className="absolute right-0 bottom-[5%] tree-sway opacity-70" scale={1.3} colors={["#006400", "#228B22", "#3CB371"]} />
+      <PineTree className="absolute right-[10%] bottom-[8%] tree-sway-delay2 opacity-60" scale={1.1} />
+      <MapleTree className="absolute right-[20%] bottom-0 tree-sway opacity-80" scale={1.2} />
+      <RoundTree className="absolute right-[30%] bottom-[12%] tree-sway-delay1 opacity-50" scale={0.9} colors={["#2E8B57", "#3CB371", "#66CDAA"]} />
+      <PineTree className="absolute right-[55%] bottom-[3%] tree-sway-delay2 opacity-40" scale={1.4} />
+    </div>
 
     {/* Road-like Design with SVG - Starts after heading */}
     <div className="relative w-full flex flex-col items-center">
