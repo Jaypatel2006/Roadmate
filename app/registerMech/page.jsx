@@ -77,7 +77,7 @@ const RegisterMechanic = () => {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gray-100 relative overflow-hidden">
+    <div className="flex items-center justify-center min-h-screen bg-gray-100 relative overflow-hidden mt-[4%]">
       {/* Background decorative elements */}
       <div className="absolute top-0 left-0 w-64 h-64 bg-blue-200 rounded-full opacity-20 -translate-x-32 -translate-y-32"></div>
       <div className="absolute bottom-0 right-0 w-72 h-72 bg-blue-300 rounded-full opacity-20 translate-x-32 translate-y-32"></div>
