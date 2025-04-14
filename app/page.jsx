@@ -173,6 +173,12 @@ export default function Home() {
   </motion.div>
 </div>
 
+<div className="box-border flex justify-center align-center mt-15">
+  <button className="flex items-center justify-center gap-3 px-8 py-4 text-white bg-gradient-to-r from-blue-600 to-blue-400 rounded-full shadow-xl transition hover:scale-105 hover:brightness-110 font-medium text-lg">
+                Join RoadMate for help{'>>'}
+              </button>
+</div>
+
 
         {/* Blinking Cursor Animation */}
         <style>
