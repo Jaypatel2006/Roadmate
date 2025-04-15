@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import dynamic from 'next/dynamic';
 import { MapPin, Wrench } from 'lucide-react';
 
@@ -9,6 +9,22 @@ const Map = dynamic(() => import('../../components/LeafletMap'), {
 });
 
 const Page = () => {
+  const [mechdata,setmechdata] = useState([])
+  const [loading, setLoading] = useState(false);
+  const handlenearby = async()=>{
+    setLoading(true)
+    const response = await fetch('/api/getmechanics', {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+    const data = await response.json();
+    console.log(data.mechanics);
+    setmechdata(data.mechanics)
+    setLoading(false)
+  }
+
   return (
     <div className="pt-28 min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50 text-gray-800">
       
@@ -17,7 +33,7 @@ const Page = () => {
         <h1 className="text-5xl md:text-6xl font-bold leading-tight mb-4">
           Find Help, <span className="text-blue-600">Fast</span>
         </h1>
-        <p className="text-xl text-gray-600">
+        <p className="text-xl text-gray-600 font-bold">
           Real-time location of roadside mechanics. Get help right where you are.
         </p>
       </section>
@@ -40,9 +56,9 @@ const Page = () => {
           </p>
           
           <div className="flex flex-col sm:flex-row justify-center gap-6">
-            <button className="flex items-center justify-center gap-3 px-8 py-4 text-blue-600 bg-white border border-blue-300 rounded-full shadow-lg transition hover:scale-105 hover:bg-blue-50 font-medium text-lg">
-              <MapPin size={22} />
-              See Nearby Mechanics
+            <button className={`flex items-center justify-center gap-3 px-8 py-4 text-blue-600 bg-white border border-blue-300 rounded-full shadow-lg transition hover:scale-105 hover:bg-blue-50 font-medium text-lg cursor-pointer`} onClick={handlenearby}>
+              <MapPin size={22}/>
+              {loading ? "Loading..." : "Find Nearby Mechanics"}
             </button>
             <button className="flex items-center justify-center gap-3 px-8 py-4 text-white bg-gradient-to-r from-blue-600 to-blue-400 rounded-full shadow-xl transition hover:scale-105 hover:brightness-110 font-medium text-lg">
               <Wrench size={22} />
