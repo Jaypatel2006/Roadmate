@@ -11,7 +11,10 @@ const Map = dynamic(() => import('../../components/LeafletMap'), {
 const services = [
   { name: 'Puncture', price: 100 },
   { name: 'Break Fail', price: 300 },
-  { name: 'Other', price: 150 },
+  { name: 'Battery issue', price: 1000 },
+  { name: 'Clutch problem', price: 500 },
+  { name: 'Engine overheating', price: 500 },
+  { name: 'Chain/sprocket issue', price: 500 },
 ];
 
 const Page = () => {
