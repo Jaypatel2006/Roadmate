@@ -2,14 +2,8 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Poppins } from "next/font/google";
-import { 
-  Facebook, 
-  Twitter, 
-  Instagram, 
-  Linkedin, 
-  Mail, 
-  MapPin 
-} from 'lucide-react';
+import Link from "next/link";
+
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -128,7 +122,6 @@ export default function Home() {
           within reach."
         </p>
 
-        {/* Cards Section */}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 mt-12 w-full max-w-[1200px] px-4">
   {/* Card 1 */}
   <motion.div
@@ -180,6 +173,14 @@ export default function Home() {
   </motion.div>
 </div>
 
+<div className="box-border flex justify-center align-center mt-15">
+  <a href="/login">
+  <button className="flex items-center justify-center gap-3 px-8 py-4 text-white bg-gradient-to-r from-blue-600 to-blue-400 rounded-full shadow-xl transition hover:scale-105 hover:brightness-110 font-medium text-lg">
+                Use RoadMate for help{'>>'}
+              </button>
+  </a>
+</div>
+
 
         {/* Blinking Cursor Animation */}
         <style>
@@ -213,7 +214,10 @@ export default function Home() {
           }
         `}
         </style>
-      </div><div className="flex flex-col items-center justify-center min-h-screen bg-[url('/back.png')] bg-cover bg-center bg-no-repeat px-8 relative">
+       
+      </div>
+      
+      <div className="flex flex-col items-center justify-center min-h-screen bg-[url('/back.png')] bg-cover bg-center bg-no-repeat px-8 relative">
   <div className="relative w-full max-w-6xl flex flex-col items-center">
     {/* Road Sign Heading */}
     <motion.h2
@@ -360,6 +364,8 @@ export default function Home() {
     </div>
   </div>
 </div>
+
+
     </div>
   );
 }

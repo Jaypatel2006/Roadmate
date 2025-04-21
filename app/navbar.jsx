@@ -21,7 +21,7 @@ const Navbar = () => {
 
   return (
     <nav
-      className={`fixed top-0 left-0 w-full px-6 md:px-12 py-4 flex justify-between items-center z-50 transition-all duration-300 ${
+      className={`fixed top-0 left-0 w-full h-[75px] px-6 md:px-12 py-4 flex justify-between items-center z-50 transition-all duration-300 ${
         isScrolled
           ? "bg-white/30 backdrop-blur-xl shadow-lg border-b border-gray-300"
           : "bg-white shadow-md"
@@ -29,16 +29,18 @@ const Navbar = () => {
     >
       {/* Left Side - Logo */}
       <div className="flex items-center gap-4 ">
-        <img
+        <a href="/">
+          <img
           src="logo.png"
           alt="RoadMate Logo"
           className="w-14 md:w-16 h-14 md:h-16 object-contain rounded-3xl"
-        />
+        /></a>
+        <a href="/">
         <img
           src="name.png"
           alt="RoadMate"
           className="h-10 md:h-12 object-contain rounded-xl"
-        />
+        /></a>
       </div>
 
       {/* Desktop Navigation */}
