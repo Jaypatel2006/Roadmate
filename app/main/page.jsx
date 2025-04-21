@@ -189,55 +189,69 @@ const Page = () => {
         </div>
       )}
 
-      {/* Booking Modal */}
-      {showBookingModal && (
-        <div className="fixed inset-0 bg-black bg-opacity-40 flex items-center justify-center z-50">
-          <div className="bg-white rounded-2xl p-6 w-full max-w-md shadow-2xl relative">
-            <button
-              className="absolute top-3 right-3 text-gray-500 hover:text-gray-700"
-              onClick={() => setShowBookingModal(false)}
-            >
-              <X size={20} />
-            </button>
-            <h2 className="text-xl font-semibold mb-6 text-center">Select Services</h2>
-
-            <div className="space-y-4">
-              {services.map((service) => (
-                <label
-                  key={service.name}
-                  className="flex items-center justify-between"
-                >
-                  <div className="flex items-center gap-2">
-                    <input
-                      type="checkbox"
-                      checked={selectedServices.includes(service.name)}
-                      onChange={() => handleCheckboxChange(service.name)}
-                      className="accent-blue-600 w-5 h-5"
-                    />
-                    <span className="text-gray-800">{service.name}</span>
-                  </div>
-                  <span className="text-gray-600">₹{service.price}</span>
-                </label>
-              ))}
-            </div>
-
-            <div className="mt-6 flex justify-between items-center border-t pt-4">
-              <span className="font-semibold text-lg">Total:</span>
-              <span className="text-blue-600 font-bold text-xl">₹{totalPrice}</span>
-            </div>
-
-            <button
-              className="mt-6 w-full bg-blue-600 text-white py-3 rounded-xl text-lg font-medium hover:brightness-110 transition"
-              onClick={() => {
-                alert('Booking confirmed!');
-                setShowBookingModal(false);
-              }}
-            >
-              Book Now
-            </button>
+      {/* Booking Modal with Glass Effect */}
+      {/* Booking Modal with Glass Effect */}
+{showBookingModal && (
+  <div className="fixed inset-0 bg-black/40 backdrop-blur-sm flex items-center justify-center z-50">
+    <div className="bg-white rounded-2xl p-8 w-full max-w-md shadow-2xl relative border border-gray-100">
+      <button
+        className="absolute top-4 right-4 text-gray-400 hover:text-gray-600 transition-colors"
+        onClick={() => setShowBookingModal(false)}
+      >
+        <X size={22} />
+      </button>
+      
+      <h2 className="text-2xl font-bold mb-6 text-center text-gray-800">Service Selection</h2>
+      
+      <div className="space-y-3 mb-6">
+        {services.map((service) => (
+          <div
+            key={service.name}
+            className={`flex items-center justify-between p-3 rounded-xl transition-all ${
+              selectedServices.includes(service.name) 
+                ? 'bg-blue-50 border border-blue-200' 
+                : 'hover:bg-gray-50 border border-transparent'
+            }`}
+          >
+            <label className="flex items-center gap-3 w-full cursor-pointer">
+              <input
+                type="checkbox"
+                checked={selectedServices.includes(service.name)}
+                onChange={() => handleCheckboxChange(service.name)}
+                className="accent-blue-600 w-5 h-5"
+              />
+              <span className="text-gray-800 font-medium">{service.name}</span>
+              <span className="ml-auto text-blue-700 font-semibold">₹{service.price}</span>
+            </label>
           </div>
-        </div>
-      )}
+        ))}
+      </div>
+
+      <div className="mt-6 flex justify-between items-center border-t border-gray-200 pt-4">
+        <span className="font-semibold text-lg text-gray-700">Total Amount</span>
+        <span className="text-blue-700 font-bold text-2xl">₹{totalPrice}</span>
+      </div>
+
+      <button
+        className={`mt-6 w-full py-4 rounded-xl text-lg font-semibold shadow-lg flex items-center justify-center gap-2 ${
+          selectedServices.length > 0
+            ? 'bg-gradient-to-r from-blue-600 to-blue-500 text-white hover:brightness-110 transition-all'
+            : 'bg-gray-200 text-gray-500 cursor-not-allowed'
+        }`}
+        onClick={() => {
+          if (selectedServices.length > 0) {
+            alert('Booking confirmed!');
+            setShowBookingModal(false);
+          }
+        }}
+        disabled={selectedServices.length === 0}
+      >
+        <Wrench size={20} />
+        {selectedServices.length > 0 ? 'Confirm Booking' : 'Select a Service'}
+      </button>
+    </div>
+  </div>
+)}
 
       {/* Map Section with debugging info */}
       <section className="w-full max-w-7xl mx-auto mb-20">
