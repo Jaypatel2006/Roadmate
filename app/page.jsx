@@ -174,7 +174,7 @@ export default function Home() {
 </div>
 
 <div className="box-border flex justify-center align-center mt-15">
-  <a href="/login">
+  <a href="/main">
   <button className="flex items-center justify-center gap-3 px-8 py-4 text-white bg-gradient-to-r from-blue-600 to-blue-400 rounded-full shadow-xl transition hover:scale-105 hover:brightness-110 font-medium text-lg">
                 Use RoadMate for help{'>>'}
               </button>

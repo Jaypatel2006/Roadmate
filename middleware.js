@@ -1,7 +1,10 @@
+
 import { NextResponse } from "next/server";
 import { verifyToken } from "@/utils/jwt";
 
+
 export async function middleware(req) {
+  
   const token = req.cookies.get("token")?.value;
 
   console.log("Token from cookies:", token);
@@ -24,5 +27,5 @@ export async function middleware(req) {
 }
 
 export const config = {
-  matcher: ["/aboutus/:path*"],
+  matcher: ["/main"],
 };

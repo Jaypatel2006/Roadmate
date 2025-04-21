@@ -22,11 +22,11 @@ export async function POST(request) {
     return NextResponse.json({ error: "Invalid credentials" }, { status: 401 });
   }
 
-  const token = generateToken(user._id);
+  const token = await generateToken(user._id);
 
   console.log("Generated token:", token); // Debugging
 
-  const response = NextResponse.json({ message: "Logged in successfully" });
+  const response = NextResponse.json({ status:200,message: "Logged in successfully" });
 
   response.cookies.set("token", token, {
     httpOnly: true, // Secure from client-side scripts
