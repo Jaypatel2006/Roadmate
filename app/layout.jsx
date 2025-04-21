@@ -1,3 +1,5 @@
+'use client'
+
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "./navbar.jsx";
@@ -9,6 +11,7 @@ import {
   Mail, 
   MapPin 
 } from 'lucide-react';
+import { usePathname } from 'next/navigation';
 
 export const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -21,12 +24,13 @@ export const geistMono = Geist_Mono({
 });
 
 
-export const metadata = {
-  title: "Next.js App with Google Fonts",
-  description: "Using modern fonts in Next.js with enhanced styling",
-};
+
 
 export default function RootLayout({ children }) {
+  const pathname = usePathname();
+  const hideNavbarPaths = ['/login','/registeruser'];
+  const shouldShowNavbar = !hideNavbarPaths.includes(pathname);
+
   return (
     <html lang="en">
       
@@ -38,7 +42,7 @@ export default function RootLayout({ children }) {
         text-gray-900 min-h-screen flex flex-col`}
       >
         {/* Navbar - Sticky at top */}
-        <Navbar />
+        {shouldShowNavbar && <Navbar />}
 
         {children}
 

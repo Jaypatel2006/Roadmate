@@ -1,23 +1,34 @@
 "use client";
 
 import React, { useState } from 'react';
+import { useRouter } from 'next/navigation'; 
 import { Lock, User, ArrowRight } from 'lucide-react';
 
 const LoginPage = () => {
   const [email, setemail] = useState('');
   const [password, setPassword] = useState('');
+  const router = useRouter(); // ← yeh hook lagaya
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const res = await fetch('/api/login',{
+    const res = await fetch('/api/login', {
       method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({email,password}),
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email, password }),
     });
+
     const data = await res.json();
-    alert(data);
-    console.log(data)
-    
+    console.log("yaha tak aayaa");
+    if (data.status == 200) {
+      setTimeout(() => {
+        router.push('/main');
+      }, 1000);
+      
+    } else {
+      alert(data.message || "Login failed");
+    }
+
+    console.log(data);
   };
 
   return (
