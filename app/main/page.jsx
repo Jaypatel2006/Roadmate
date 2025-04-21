@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import dynamic from 'next/dynamic';
 import { MapPin, Wrench, X } from 'lucide-react';
 
@@ -18,42 +18,93 @@ const services = [
 ];
 
 const Page = () => {
-  const [mechdata,setmechdata] = useState([])
+  const [mechanics, setMechanics] = useState([]);
   const [loading, setLoading] = useState(false);
-  const handlenearby = async()=>{
-    setLoading(true)
-    const response = await fetch('/api/getmechanics', {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    });
-    const data = await response.json();
-    console.log(data.mechanics);
-    setmechdata(data.mechanics)
-    setLoading(false)
-  }
+  const [userLocation, setUserLocation] = useState(null);
+  const [locationError, setLocationError] = useState('');
 
   const [showLocationModal, setShowLocationModal] = useState(false);
-  const [location, setLocation] = useState(null);
-  const [error, setError] = useState('');
-
   const [showBookingModal, setShowBookingModal] = useState(false);
   const [selectedServices, setSelectedServices] = useState([]);
 
+  const getUserLocation = () => {
+    return new Promise((resolve) => {
+      setLocationError('');
+      navigator.geolocation.getCurrentPosition(
+        (pos) => {
+          const { latitude, longitude } = pos.coords;
+          const location = { lat: latitude, lng: longitude };
+          setUserLocation(location);
+          resolve(location);
+        },
+        (err) => {
+          const errorMsg = 'Location permission denied or unavailable.';
+          setLocationError(errorMsg);
+          console.error(err);
+          resolve(null);
+        }
+      );
+    });
+  };
+
+  const handleNearby = async () => {
+    setLoading(true);
+    
+    try {
+      let position = userLocation;
+      if (!position) {
+        position = await getUserLocation();
+      }
+      
+      if (!position) {
+        alert('Cannot access your location. Please allow location access and try again.');
+        setLoading(false);
+        return;
+      }
+      
+      // Use GET method to fetch all mechanics if you don't have location
+      // OR use POST method to get filtered mechanics based on location
+      let url = '/api/getmechanics';
+      let options = {};
+      
+      if (position) {
+        options = {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            latitude: position.lat,
+            longitude: position.lng
+          }),
+        };
+      }
+      
+      const response = await fetch(url, options);
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      
+      const data = await response.json();
+      console.log('Mechanics data:', data);
+      setMechanics(data.mechanics || []);
+      
+      if (data.mechanics && data.mechanics.length > 0) {
+        console.log(`Found ${data.mechanics.length} mechanics nearby`);
+      } else {
+        console.log('No mechanics found nearby');
+      }
+    } catch (error) {
+      console.error('Error fetching mechanics:', error);
+      alert(`Error fetching mechanics: ${error.message}`);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   const handleSeeMechanics = () => {
     setShowLocationModal(true);
-    setError('');
-    navigator.geolocation.getCurrentPosition(
-      (pos) => {
-        const { latitude, longitude } = pos.coords;
-        setLocation({ lat: latitude, lng: longitude });
-      },
-      (err) => {
-        setError('Location permission denied or unavailable.');
-        console.error(err);
-      }
-    );
+    getUserLocation();
   };
 
   const handleCheckboxChange = (serviceName) => {
@@ -68,6 +119,11 @@ const Page = () => {
     const service = services.find((s) => s.name === name);
     return total + (service?.price || 0);
   }, 0);
+
+  // Initialize location when component mounts
+  useEffect(() => {
+    getUserLocation();
+  }, []);
 
   return (
     <div className="pt-28 min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50 text-gray-800">
@@ -90,7 +146,9 @@ const Page = () => {
 
           <div className="flex flex-col sm:flex-row justify-center gap-6">
             <button
-              className={`flex items-center justify-center gap-3 px-8 py-4 text-blue-600 bg-white border border-blue-300 rounded-full shadow-lg transition hover:scale-105 hover:bg-blue-50 font-medium text-lg cursor-pointer`} onClick={handlenearby}
+              className={`flex items-center justify-center gap-3 px-8 py-4 text-blue-600 bg-white border border-blue-300 rounded-full shadow-lg transition hover:scale-105 hover:bg-blue-50 font-medium text-lg cursor-pointer ${loading ? 'opacity-70' : ''}`} 
+              onClick={handleNearby}
+              disabled={loading}
             >
               <MapPin size={22}/>
               {loading ? "Loading..." : "Find Nearby Mechanics"}
@@ -118,12 +176,12 @@ const Page = () => {
             </button>
             <h2 className="text-xl font-semibold mb-4 text-center">Your Location</h2>
 
-            {location ? (
+            {userLocation ? (
               <div className="text-center text-green-600 font-medium">
-                📍 Latitude: {location.lat.toFixed(4)}, Longitude: {location.lng.toFixed(4)}
+                📍 Latitude: {userLocation.lat.toFixed(4)}, Longitude: {userLocation.lng.toFixed(4)}
               </div>
-            ) : error ? (
-              <p className="text-center text-red-500">{error}</p>
+            ) : locationError ? (
+              <p className="text-center text-red-500">{locationError}</p>
             ) : (
               <p className="text-center text-gray-500">Fetching your location...</p>
             )}
@@ -181,10 +239,16 @@ const Page = () => {
         </div>
       )}
 
-      {/* Map Section */}
-      <section className="w-full max-w-7xl mx-auto rounded-3xl overflow-hidden shadow-2xl border border-gray-200 mb-20 mt-15">
-        <div className="h-[60vh] md:h-[70vh] w-full">
-          <Map />
+      {/* Map Section with debugging info */}
+      <section className="w-full max-w-7xl mx-auto mb-20">
+        {mechanics.length > 0 && (
+          <div className="mb-4 p-4 bg-green-100 border border-green-300 rounded-lg text-green-800">
+            Found {mechanics.length} mechanics nearby
+          </div>
+        )}
+        
+        <div className="h-[60vh] md:h-[70vh] w-full rounded-3xl overflow-hidden shadow-2xl border border-gray-200">
+          <Map mechanics={mechanics} />
         </div>
       </section>
     </div>
