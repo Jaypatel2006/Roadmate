@@ -82,6 +82,7 @@ const LeafletMap = ({ mechanics = [] }) => {
   
   return (
     <MapContainer
+      className="z-0"
       center={[20.5937, 78.9629]} // Default to center of India
       zoom={5}
       style={{ height: '100%', width: '100%' }}

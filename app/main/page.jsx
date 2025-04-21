@@ -247,7 +247,7 @@ const Page = () => {
           </div>
         )}
         
-        <div className="h-[60vh] md:h-[70vh] w-full rounded-3xl overflow-hidden shadow-2xl border border-gray-200">
+        <div className="h-[50vh] md:h-[70vh] w-full rounded-3xl overflow-hidden shadow-2xl border border-gray-200 mt-10">
           <Map mechanics={mechanics} />
         </div>
       </section>
