@@ -27,5 +27,5 @@ export async function middleware(req) {
 }
 
 export const config = {
-  matcher: ["/dummy"],
+  matcher: ["/main"],
 };

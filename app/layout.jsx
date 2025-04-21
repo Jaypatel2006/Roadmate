@@ -28,7 +28,7 @@ export const geistMono = Geist_Mono({
 
 export default function RootLayout({ children }) {
   const pathname = usePathname();
-  const hideNavbarPaths = ['/login','/registeruser'];
+  const hideNavbarPaths = [];
   const shouldShowNavbar = !hideNavbarPaths.includes(pathname);
 
   return (
