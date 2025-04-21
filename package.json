@@ -6,7 +6,8 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "preinstall": "TAILWIND_DISABLE_OXIDE=1"
   },
   "dependencies": {
     "bcryptjs": "^3.0.2",
@@ -25,6 +26,9 @@
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4.0.15",
-    "tailwindcss": "^4.0.15"
+    "autoprefixer": "^10.4.21",
+    "postcss": "^8.5.3",
+    "postcss-loader": "^8.1.1",
+    "tailwindcss": "^4.1.4"
   }
 }
