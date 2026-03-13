@@ -94,7 +94,7 @@ This project is licensed under the MIT License.
 
 👨‍💻 Author
 
-Jay Patel 
-Dhruv Sarvaiya
-Dev Shyara
-Rupesh Chaudhary
+Jay Patel   
+Dhruv Sarvaiya  
+Dev Shyara  
+Rupesh Chaudhary  
