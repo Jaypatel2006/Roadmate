@@ -1,4 +1,4 @@
-# 🚗 Roadside Assistance Web Application
+# 🚗 RoadMate
 
 A modern **location-based roadside assistance platform** that connects drivers with **nearby mechanics for on-site vehicle services**. The application allows users experiencing vehicle breakdowns to quickly locate and request help from the closest available mechanic through an **interactive map interface**.
 
@@ -45,10 +45,6 @@ Built with **Next.js, TailwindCSS, MongoDB, and Leaflet**, the platform provides
 
 ---
 
-
-# Project Title
-
-A brief description of what this project does and who it's for
 
 ## ⚙️ Installation
 
