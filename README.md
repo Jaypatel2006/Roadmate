@@ -45,50 +45,59 @@ Built with **Next.js, TailwindCSS, MongoDB, and Leaflet**, the platform provides
 
 ---
 
+
+# Project Title
+
+A brief description of what this project does and who it's for
+
 ## ⚙️ Installation
 
 ### 1. Clone the Repository
 ```bash
-git clone https://github.com/your-username/roadside-assistance-app.git
-cd roadside-assistance-app
-2. Install Dependencies
-npm install
-3. Configure Environment Variables
+git clone https://github.com/JayPatel2006/RoadMate.git
+cd RoadMate
+```
 
-Create a .env.local file in the root directory and add:
 
-MONGODB_URI=your_mongodb_connection_string
-NEXT_PUBLIC_MAP_API_KEY=your_map_key_if_required
-4. Start Development Server
-npm run dev
+### 2. Install Dependencies
+```npm install```
 
-Open your browser and navigate to:
+### 3. Configure Environment Variables
 
-http://localhost:3000
+Create a .env.local file in the root directory and add the following:
 
-🎯 Future Improvements
+``` MONGODB_URI=your_mongodb_connection_string
+NEXT_PUBLIC_MAP_API_KEY=your_map_key_if_required 
+```
 
-Real-time mechanic availability tracking
+### 4. Start the Development Server
+``` npm run dev ```
 
-In-app messaging between users and mechanics
+Open your browser and go to:
 
-Online payment integration
+``` http://localhost:3000
+```
 
-Ratings and reviews for mechanics
+### 🎯 Future Improvements
 
-Push notifications for service updates
+1. Real-time mechanic availability tracking
+2. In-app messaging between users and mechanics
+3. Online payment integration
+4. Rating and review system for mechanics
+5. Push notifications for service updates
 
 🤝 Contributing
 
-Contributions are welcome.
-Feel free to fork the repository and submit a pull request.
+Contributions are welcome!
+Feel free to fork the repository, make improvements, and submit a pull request.
 
 📄 License
 
 This project is licensed under the MIT License.
 
 👨‍💻 Author
-Jay Patel
+
+Jay Patel 
 Dhruv Sarvaiya
 Dev Shyara
 Rupesh Chaudhary
