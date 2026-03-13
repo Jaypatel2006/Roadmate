@@ -1,36 +1,114 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# 🚗 Roadside Assistance Web Application
 
-## Getting Started
+A modern **location-based roadside assistance platform** that connects drivers with **nearby mechanics for on-site vehicle services**. The application allows users experiencing vehicle breakdowns to quickly locate and request help from the closest available mechanic through an **interactive map interface**.
 
-First, run the development server:
+Built with **Next.js, TailwindCSS, MongoDB, and Leaflet**, the platform provides real-time location visualization, efficient service discovery, and a responsive user experience across devices.
 
+---
+
+## 🚀 Features
+
+### 📍 Location-Based Mechanic Discovery
+- Detects user location to find nearby mechanics
+- Displays mechanics on an interactive **Leaflet map**
+- Helps users quickly identify the closest service provider
+
+### 🧰 Roadside Service Requests
+- Users can send **on-site service requests**
+- Mechanics can respond to nearby service calls
+- Reduces waiting time during emergencies
+
+### 🗺️ Interactive Map Interface
+- Real-time map visualization of available mechanics
+- Marker-based UI for easy navigation
+- Distance-based service suggestions
+
+### 📱 Responsive UI
+- Clean and modern interface built with **TailwindCSS**
+- Fully responsive design for **mobile, tablet, and desktop**
+
+### 🗄️ Database Management
+- **MongoDB** stores user information, mechanic profiles, and service requests
+- Efficient backend communication via **Next.js API routes**
+
+---
+
+## 🧩 Tech Stack
+
+| Component | Technology |
+|-----------|------------|
+| Frontend | Next.js |
+| Styling | TailwindCSS |
+| Database | MongoDB |
+| Maps | Leaflet |
+| Backend | Next.js API Routes |
+
+---
+
+## ⚙️ Installation
+
+### 1. Clone the Repository
 ```bash
+git clone https://github.com/your-username/roadside-assistance-app.git
+cd roadside-assistance-app
+2. Install Dependencies
+npm install
+3. Configure Environment Variables
+
+Create a .env.local file in the root directory and add:
+
+MONGODB_URI=your_mongodb_connection_string
+NEXT_PUBLIC_MAP_API_KEY=your_map_key_if_required
+4. Start Development Server
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open your browser and navigate to:
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+http://localhost:3000
+📂 Project Structure
+/app
+/components
+/pages
+/pages/api
+/lib
+/styles
+/public
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+components/ → Reusable UI components
 
-## Learn More
+pages/ → Application pages
 
-To learn more about Next.js, take a look at the following resources:
+pages/api/ → Backend API endpoints
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+lib/ → Database connection and helper functions
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+styles/ → Global styles and Tailwind configuration
 
-## Deploy on Vercel
+public/ → Static assets
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+🎯 Future Improvements
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Real-time mechanic availability tracking
+
+In-app messaging between users and mechanics
+
+Online payment integration
+
+Ratings and reviews for mechanics
+
+Push notifications for service updates
+
+🤝 Contributing
+
+Contributions are welcome.
+Feel free to fork the repository and submit a pull request.
+
+📄 License
+
+This project is licensed under the MIT License.
+
+👨‍💻 Author
+Jay Patel
+Dhruv Sarvaiya
+Dev Shyara
+Rupesh Chaudhary
