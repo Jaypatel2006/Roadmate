@@ -71,7 +71,8 @@ NEXT_PUBLIC_MAP_API_KEY=your_map_key_if_required
 
 Open your browser and go to:
 
-``` http://localhost:3000
+```
+http://localhost:3000
 ```
 
 ### 🎯 Future Improvements
