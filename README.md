@@ -65,26 +65,6 @@ npm run dev
 Open your browser and navigate to:
 
 http://localhost:3000
-📂 Project Structure
-/app
-/components
-/pages
-/pages/api
-/lib
-/styles
-/public
-
-components/ → Reusable UI components
-
-pages/ → Application pages
-
-pages/api/ → Backend API endpoints
-
-lib/ → Database connection and helper functions
-
-styles/ → Global styles and Tailwind configuration
-
-public/ → Static assets
 
 🎯 Future Improvements
 
