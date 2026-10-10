@@ -8,7 +8,7 @@ import Link from 'next/link';
 const LoginPage = () => {
   const [email, setemail] = useState('');
   const [password, setPassword] = useState('');
-  const router = useRouter(); // ← yeh hook lagaya
+  const router = useRouter();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -19,17 +19,13 @@ const LoginPage = () => {
     });
 
     const data = await res.json();
-    console.log("yaha tak aayaa");
-    if (data.status == 200) {
+    if (res.ok) {
       setTimeout(() => {
         router.push('/main');
       }, 1000);
-      
     } else {
-      alert(data.message || "Login failed");
+      alert(data.error || data.message || "Login failed");
     }
-
-    console.log(data);
   };
 
   return (

@@ -9,7 +9,6 @@ const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const pathname = usePathname();
-  console.log(pathname)
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
@@ -29,18 +28,18 @@ const Navbar = () => {
     >
       {/* Left Side - Logo */}
       <div className="flex items-center gap-4 ">
-        <a href="/">
+        <Link href="/">
           <img
-          src="logo.png"
+          src="/logo.png"
           alt="RoadMate Logo"
           className="w-14 md:w-16 h-14 md:h-16 object-contain rounded-3xl"
-        /></a>
-        <a href="/">
+        /></Link>
+        <Link href="/">
         <img
-          src="name.png"
+          src="/name.png"
           alt="RoadMate"
           className="h-10 md:h-12 object-contain rounded-xl"
-        /></a>
+        /></Link>
       </div>
 
       {/* Desktop Navigation */}
@@ -95,12 +94,16 @@ const Navbar = () => {
 
             {/* Mobile Buttons */}
             <div className="flex flex-col w-3/4 gap-3">
-              <button className="bg-gradient-to-r from-blue-600 to-blue-400 text-white px-5 py-2 rounded-full cursor-pointer hover:brightness-110 transition-all duration-300">
-               Login
-              </button>
-              <button className="bg-gradient-to-r from-gray-800 to-gray-600 text-white px-5 py-2 rounded-full cursor-pointer hover:brightness-110 transition-all duration-300">
-                Sign up
-              </button>
+              <Link href="/login" onClick={() => setIsOpen(false)}>
+                <button className="w-full bg-gradient-to-r from-blue-600 to-blue-400 text-white px-5 py-2 rounded-full cursor-pointer hover:brightness-110 transition-all duration-300">
+                  Login
+                </button>
+              </Link>
+              <Link href="/registeruser" onClick={() => setIsOpen(false)}>
+                <button className="w-full bg-gradient-to-r from-gray-800 to-gray-600 text-white px-5 py-2 rounded-full cursor-pointer hover:brightness-110 transition-all duration-300">
+                  Sign up
+                </button>
+              </Link>
             </div>
           </motion.div>
         )}

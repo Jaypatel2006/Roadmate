@@ -5,16 +5,21 @@ const mechanicschema = new mongoose.Schema({
         required:true
     },
     email:{
-        type:String
+        type:String,
+        required:true,
+        unique:true
     },
     password:{
         type:String,
+        required:true
     },
     latitude:{
-        type:Number
+        type:Number,
+        required:true
     },
     longitude:{
-        type:Number
+        type:Number,
+        required:true
     }
 },{timestamps:true})
 
