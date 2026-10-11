@@ -1,8 +1,7 @@
-'use client'
-
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "./navbar.jsx";
+import Link from "next/link";
 import { 
   Facebook, 
   Twitter, 
@@ -11,38 +10,35 @@ import {
   Mail, 
   MapPin 
 } from 'lucide-react';
-import { usePathname } from 'next/navigation';
 
-export const geistSans = Geist({
+const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
 });
 
-export const geistMono = Geist_Mono({
+const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
 });
 
-
-
+export const metadata = {
+  title: "RoadMate - Roadside Assistance",
+  description: "Location-based roadside assistance platform connecting drivers with nearby mechanics for on-site vehicle services.",
+  icons: {
+    icon: "/logo.png",
+  },
+};
 
 export default function RootLayout({ children }) {
-  const pathname = usePathname();
-  const hideNavbarPaths = [];
-  const shouldShowNavbar = !hideNavbarPaths.includes(pathname);
-
   return (
     <html lang="en">
-      
-      <link rel="icon" type="image/png" sizes="1024x1024" href="/logo-1024x1024.png"/>
-      
       <body
         className={`${geistSans.variable} ${geistMono.variable} 
         antialiased bg-gradient-to-b from-gray-100 to-gray-300 
         text-gray-900 min-h-screen flex flex-col`}
       >
         {/* Navbar - Sticky at top */}
-        {shouldShowNavbar && <Navbar />}
+        <Navbar />
 
         {children}
 
@@ -75,9 +71,9 @@ export default function RootLayout({ children }) {
         <div>
           <h4 className="text-lg font-semibold mb-4">Quick Links</h4>
           <ul className="space-y-2">
-            <li><a href="#" className="text-gray-400 hover:text-white">Home</a></li>
-            <li><a href="\aboutus" className="text-gray-400 hover:text-white">About Us</a></li>
-            <li><a href="\contact" className="text-gray-400 hover:text-white">Contact</a></li>
+            <li><Link href="/" className="text-gray-400 hover:text-white">Home</Link></li>
+            <li><Link href="/aboutus" className="text-gray-400 hover:text-white">About Us</Link></li>
+            <li><Link href="/contact" className="text-gray-400 hover:text-white">Contact</Link></li>
           </ul>
         </div>
 

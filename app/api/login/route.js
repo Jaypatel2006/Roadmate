@@ -8,23 +8,19 @@ export async function POST(request) {
   await connectDb();
   const { email, password } = await request.json();
 
-  console.log("Login attempt for:", email); // Debugging
 
   const user = await User.findOne({ email });
   if (!user) {
-    console.log("User not found.");
     return NextResponse.json({ error: "Invalid credentials" }, { status: 401 });
   }
 
   const isMatch = await bcrypt.compare(password, user.password);
   if (!isMatch) {
-    console.log("Password mismatch.");
     return NextResponse.json({ error: "Invalid credentials" }, { status: 401 });
   }
 
   const token = await generateToken(user._id);
 
-  console.log("Generated token:", token); // Debugging
 
   const response = NextResponse.json({ status:200,message: "Logged in successfully" });
 
@@ -35,7 +31,6 @@ export async function POST(request) {
     path: "/",
   });
 
-  console.log("Token set in cookies."); // Debugging
 
   return response;
 }

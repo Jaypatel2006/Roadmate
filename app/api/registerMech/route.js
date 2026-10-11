@@ -7,7 +7,6 @@ export async function POST(req) {
     await connectDb()
   try {
     const bodyText = await req.text(); // Read request body as text for debugging
-    console.log("Received Raw Body:", bodyText);
 
     if (!bodyText) {
       return NextResponse.json({ message: "Empty request body" }, { status: 400 });

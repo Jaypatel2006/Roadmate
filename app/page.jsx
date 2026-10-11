@@ -46,12 +46,13 @@ const MapleTree = ({ className = "", scale = 1 }) => (
   </svg>
 );
 
+const words = ["Time", "Money", "Efforts"];
+
 export default function Home() {
   const [text, setText] = useState("");
   const [isDeleting, setIsDeleting] = useState(false);
   const [index, setIndex] = useState(0);
   const [cursorBlink, setCursorBlink] = useState(false);
-  const words = ["Time", "Money", "Efforts"];
 
   useEffect(() => {
     const typingSpeed = isDeleting ? 100 : 150;
